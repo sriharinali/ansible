@@ -1,0 +1,12 @@
+- name: installation of apache
+  hosts: all
+  become: yes
+  tasks:
+    - name: update cache in ubuntu
+      apt:
+        update_cache: yes
+      when: ansible_distribution == 'Ubuntu'
+    - name: install java
+      package:
+         name: '{{ java_pkg }}'
+         state: present
