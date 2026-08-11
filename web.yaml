@@ -5,7 +5,7 @@
     - name: update cache in ubuntu
       apt:
         update_cache: yes
-    - name: install webserver
+    - name: install java
       apt:
-        name: apache2
+        name:  openjdk-21-jdk
         state: present
