@@ -5,8 +5,7 @@
     - name: update cache in ubuntu
       apt:
         update_cache: yes
-      when: ansible_distribution == 'Ubuntu'
-    - name: install java
-      package:
-         name: '{{ java_pkg }}'
+    - name install webserver
+        apt:
+         name: apache2
          state: present
