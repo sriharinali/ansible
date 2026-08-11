@@ -8,9 +8,12 @@ pipeline {
     stages {
         stage('Run Ansible') {
             steps {
+                withCredentials([sshUserPrivateKey(credentialsId: 'target-server-ssh-key', keyFileVariable: 'SSH_KEY')])
+                {
                 sh '''
                     ansible-playbook  -i host.ini web.yaml
                 '''
+                }
             }
         }
     }
