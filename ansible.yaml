@@ -1,5 +1,5 @@
 - name: Install Java and Apache
-  hosts: webservers
+  hosts: all
   become: yes
 
   tasks:
