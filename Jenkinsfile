@@ -5,8 +5,7 @@ pipeline {
     }
 
     stages {
-        stage('Inst
-        all Java and Apache') {
+        stage('Install Java and Apache') {
             steps {
                 withCredentials([
                     sshUserPrivateKey(
