@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        // 'ansible-ssh-creds' is the Credential ID you saved in Jenkins
+        SSH_KEYS = credentials('target-server-ssh-key')
+    }
 
     stages {
 
@@ -12,7 +16,7 @@ pipeline {
         stage('Test Ansible Connection') {
             steps {
                 sh '''
-                    ansible all -i host.ini -m ping
+                    ansible all -i host.ini -m ping -u ubuntu --private-key=$SSH_KEY
                 '''
             }
         }
@@ -20,7 +24,7 @@ pipeline {
         stage('Install Java and Apache') {
             steps {
                 sh '''
-                    ansible-playbook -i host.ini ansible.yaml
+                    ansible-playbook -i host.ini ansible.yaml -u ubuntu --private-key=$SSH_KEY
                 '''
             }
         }
