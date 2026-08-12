@@ -1,0 +1,21 @@
+- name: Install Java and Apache
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Install Java
+      apt:
+        name: openjdk-17-jdk
+        state: present
+        update_cache: yes
+
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+
+    - name: Start Apache
+      systemd:
+        name: apache2
+        state: started
+        enabled: yes
