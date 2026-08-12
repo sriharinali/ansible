@@ -3,15 +3,9 @@
   become: yes
 
   tasks:
-    - name: Install Java
+    - name: update_cache
       apt:
-        name: openjdk-17-jdk
-        state: present
         update_cache: yes
-    - name : update update_cache
-      apt: 
-      update_cache: yes
-
     - name: Install Apache
       apt:
         name: apache2
