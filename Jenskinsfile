@@ -27,13 +27,5 @@ pipeline {
 
     }
 
-    post {
-        success {
-            echo 'Java and Apache installation completed successfully!'
-        }
-
-        failure {
-            echo 'Installation failed!'
-        }
-    }
+    
 }
