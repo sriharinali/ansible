@@ -15,17 +15,14 @@ pipeline {
 
         stage('Test Ansible Connection') {
             steps {
-                sh '''
-                    ansible all -i host.ini -m ping -u ubuntu --private-key=$SSH_KEYS
-                '''
-            }
-        }
-
-        stage('Install Java and Apache') {
+            stage('Install Java and Apache') {
             steps {
+                withCredentials([sshUserPrivateKey(credentialsId: 'target-server-ssh-key', keyFileVariable: 'SSH_KEY')])
+                {
                 sh '''
-                    ansible-playbook -i host.ini ansible.yaml -u ubuntu --private-key=$SSH_KEYS
+                    ansible-playbook  -i host.ini ansible.yaml 
                 '''
+                }
             }
         }
 
