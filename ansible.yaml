@@ -8,14 +8,13 @@
         name: openjdk-17-jdk
         state: present
         update_cache: yes
+    - name : update update_cache
+      apt: 
+      update_cache: yes
 
     - name: Install Apache
       apt:
         name: apache2
         state: present
 
-    - name: Start Apache
-      systemd:
-        name: apache2
-        state: started
-        enabled: yes
+  
