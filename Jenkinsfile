@@ -7,7 +7,7 @@ pipeline {
                 withCredentials([
                     sshUserPrivateKey(
                         credentialsId: 'target-server-ssh-key', 
-                        keyFileVariable: 'SSH_KEY'
+                        keyFileVariable: 'SSH_KEY',
                         usernameVariable: 'SSH_USER')])
                 {
                 sh '''
