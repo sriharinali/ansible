@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    environment {
-        // 'ansible-ssh-creds' is the Credential ID you saved in Jenkins
-        SSH_KEYS = credentials('target-server-ssh-key')
-    }
 
     stages {
         stage('Install Java and Apache') {
