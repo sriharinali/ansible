@@ -7,7 +7,7 @@ pipeline {
                 withCredentials([sshUserPrivateKey(credentialsId: 'target-server-ssh-key', keyFileVariable: 'SSH_KEY')])
                 {
                 sh '''
-                    ansible-playbook  -i host.ini ansible.yaml 
+                    ansible-playbook  -i host.ini ansible.yaml  -u ubuntu --private-key "$SSH_KEY"
                 '''
                 }
             }
