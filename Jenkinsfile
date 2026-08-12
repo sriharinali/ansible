@@ -10,7 +10,7 @@ pipeline {
                         keyFileVariable: 'SSH_KEY')])
                 {
                 sh '''
-                    ansible-playbook  -i host.ini ansible.yaml  -u ubuntu --private-key $SSH_KEY
+                    ansible-playbook  -i host.ini ansible.yaml  --private-key $SSH_KEY
                 '''
                 }
             }
