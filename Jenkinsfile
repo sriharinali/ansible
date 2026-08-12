@@ -16,7 +16,7 @@ pipeline {
         stage('Test Ansible Connection') {
             steps {
                 sh '''
-                    ansible all -i host.ini -m ping -u ubuntu --private-key=$SSH_KEY
+                    ansible all -i host.ini -m ping -u ubuntu --private-key=$SSH_KEYS
                 '''
             }
         }
@@ -24,7 +24,7 @@ pipeline {
         stage('Install Java and Apache') {
             steps {
                 sh '''
-                    ansible-playbook -i host.ini ansible.yaml -u ubuntu --private-key=$SSH_KEY
+                    ansible-playbook -i host.ini ansible.yaml -u ubuntu --private-key=$SSH_KEYS
                 '''
             }
         }
