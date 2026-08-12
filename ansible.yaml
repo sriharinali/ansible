@@ -6,6 +6,7 @@
     - name: update_cache
       apt:
         update_cache: yes
+        
     - name: Install Apache
       apt:
         name: apache2
