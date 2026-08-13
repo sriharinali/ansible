@@ -5,7 +5,7 @@ pipeline {
         stage('Install Java and Apache') {
             steps {
                 sh '''
-                    ansible-playbook  -i host.ini ansible.yaml -k
+                    ansible-playbook  -i host.ini ansible.yaml -K
                 '''
                 }
             }
