@@ -1,6 +1,6 @@
 - name: Install Java and Apache
   hosts: all
-  become: yes
+  become: no
   remote_user: test
 
   tasks:
