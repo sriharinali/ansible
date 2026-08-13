@@ -1,6 +1,7 @@
 - name: Install Java and Apache
   hosts: all
   become: yes
+  remote_user: ubuntu
 
   tasks:
     - name: update_cache
