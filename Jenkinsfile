@@ -1,8 +1,9 @@
 pipeline {
     agent any
+
     environment {
-    ANSIBLE_HOST_KEY_CHECKING = 'False'
-}
+        ANSIBLE_HOST_KEY_CHECKING = 'False'
+    }
 
     stages {
         stage('Install Java and Apache') {
@@ -14,11 +15,15 @@ pipeline {
                         usernameVariable: 'SSH_USER'
                     )
                 ]) {
-                sh '''
-                    ansible-playbook  -i host.ini ansible.yaml -u "$SSH_USER" --private-key="$SSH_KEY" 
-                '''
+                    sh '''
+                        ansible-playbook \
+                            -i host.ini \
+                            ansible.yaml \
+                            -u "$SSH_USER" \
+                            --private-key="$SSH_KEY"
+                    '''
                 }
             }
         }
-
     }
+}
