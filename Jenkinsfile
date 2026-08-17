@@ -2,17 +2,23 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Ansible Ping Test') {
             steps {
                 sh '''
-                    echo "Running Ansible ping test..."
+                    echo "===== System ====="
+                    whoami
+                    pwd
+
+                    echo "===== Python ====="
+                    python3 --version
+
+                    echo "===== Ansible ====="
+                    ansible --version
+
+                    echo "===== Files ====="
+                    ls -la
+
+                    echo "===== Ping Test ====="
                     ansible-playbook -i host.ini ping.yaml
                 '''
             }
