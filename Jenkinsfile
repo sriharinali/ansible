@@ -6,7 +6,7 @@ pipeline {
     }
 
     stages {
-        stage('Install Java and Apache') {
+        stage('Install terraform') {
             steps {
                 withCredentials([
                     sshUserPrivateKey(
@@ -18,7 +18,7 @@ pipeline {
                     sh '''
                         ansible-playbook \
                             -i host.ini \
-                            ansible.yaml \
+                            terraform.yaml \
                             -u "$SSH_USER" \
                             --private-key="$SSH_KEY"
                     '''
