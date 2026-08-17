@@ -1,29 +1,31 @@
 pipeline {
     agent any
 
-    environment {
-        ANSIBLE_HOST_KEY_CHECKING = 'False'
+    stages {
+
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Ansible Ping Test') {
+            steps {
+                sh '''
+                    echo "Running Ansible ping test..."
+                    ansible-playbook -i host.ini ping.yaml.yml
+                '''
+            }
+        }
     }
 
-    stages {
-        stage('Install terraform') {
-            steps {
-                withCredentials([
-                    sshUserPrivateKey(
-                        credentialsId: 'ssh-key',
-                        keyFileVariable: 'SSH_KEY',
-                        usernameVariable: 'SSH_USER'
-                    )
-                ]) {
-                    sh '''
-                        ansible-playbook \
-                            -i host.ini \
-                            terraform.yaml \
-                            -u "$SSH_USER" \
-                            --private-key="$SSH_KEY"
-                    '''
-                }
-            }
+    post {
+        success {
+            echo 'Ansible ping test completed successfully!'
+        }
+
+        failure {
+            echo 'Ansible ping test failed!'
         }
     }
 }
