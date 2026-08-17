@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh '''
                     echo "Running Ansible ping test..."
-                    ansible-playbook -i host.ini ping.yaml.yml
+                    ansible-playbook -i host.ini ping.yaml
                 '''
             }
         }
