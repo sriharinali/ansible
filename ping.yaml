@@ -6,6 +6,12 @@
   tasks:
     - name: Test connectivity
       ansible.builtin.ping:
-    - name: Show user running playbook
+    - name: Identify Jenkins user
+      command: whoami
+      delegate_to: localhost
+      register: whoami_result
+
+    - name: Show Jenkins user
       debug:
-        msg: "Playbook is running as user {{ triggered_by }}"
+        msg: "Playbook executed by {{ whoami_result.stdout }}"
+
