@@ -5,5 +5,4 @@
 
   tasks:
     - name: Test connectivity
-      ansible.builtin.ping:
-# i am working on this  
+      ansible.builtin.ping:  
