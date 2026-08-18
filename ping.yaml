@@ -8,4 +8,4 @@
       ansible.builtin.ping:
     - name: Show user running playbook
       debug:
-        msg: "Playbook is running as user {{ ansible_env.USER }}"
+        msg: "Playbook is running as user {{ jenkins_user }}"
