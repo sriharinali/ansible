@@ -5,4 +5,7 @@
 
   tasks:
     - name: Test connectivity
-      ansible.builtin.ping:  
+      ansible.builtin.ping:
+    - name: Show user running playbook
+      debug:
+        msg: "Playbook is running as user {{ ansible_env.USER }}"
