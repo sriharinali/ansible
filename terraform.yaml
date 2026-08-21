@@ -5,10 +5,6 @@
   tasks:
     - name: Ensure required packages are installed
       apt:
-        name:
-          - wget
-          - unzip
-        state: present
         update_cache: yes
 
     - name: Download Terraform binary
@@ -21,6 +17,7 @@
         src: /tmp/terraform.zip
         dest: /tmp/
         remote_src: yes
+        extra_opts: [ "-o" ]
 
     - name: Move Terraform binary to /usr/local/bin
       copy:
@@ -28,6 +25,8 @@
         dest: /usr/local/bin/
         mode: '0755'
         remote_src: yes
+        extra_opts: [ "-o" ]
+
 
     - name: Verify Terraform installation
       command: terraform -v
