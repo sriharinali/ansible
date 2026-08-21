@@ -6,7 +6,6 @@ pipeline {
             steps {
                 sh '''
                  ansible-playbook -i host.ini terraform.yaml
-                
                 '''
             }
          }
