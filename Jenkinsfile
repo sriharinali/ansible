@@ -4,9 +4,9 @@ pipeline {
     stages {
         stage('Teeraform install') {
             steps {
-                sh 
-                '''
+                sh '''
                  ansible-playbook -i host.ini terraform.yaml
+                
                 '''
             }
         }
