@@ -13,7 +13,7 @@
 
     - name: Download Terraform binary
       get_url:
-        url: https://releases.hashicorp.com/terraform/1.15.9/terraform_1.9.5_linux_amd64.zip
+        url: https://releases.hashicorp.com/terraform/1.15.9/terraform_1.15.9_linux_amd64.zip
         dest: /tmp/terraform.zip
 
     - name: Unzip Terraform binary
