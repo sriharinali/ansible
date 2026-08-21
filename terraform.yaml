@@ -3,10 +3,6 @@
   become: yes
 
   tasks:
-    - name: Ensure required packages are installed
-      apt:
-        update_cache: yes
-
     - name: Download Terraform binary
       get_url:
         url: https://releases.hashicorp.com/terraform/1.15.9/terraform_1.15.9_linux_amd64.zip
