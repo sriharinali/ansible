@@ -5,27 +5,10 @@ pipeline {
         stage('Ansible Ping Test') {
             steps {
                 sh '''
-                    echo "===== System ====="
-                    whoami
-                    pwd
-
-                    echo "===== Python ====="
-                    python3 --version
-
-                    echo "===== Ping Test ====="
+                    
                     ansible-playbook -i host.ini ping.yaml
                 '''
             }
         }
-    }
-
-    post {
-        success {
-            echo 'Ansible ping test completed successfully!'
-        }
-
-        failure {
-            echo 'Ansible ping test failed!'
-        }
-    }
+    }    
 }
